@@ -1,4 +1,6 @@
-<template></template>
+<template>
+    <TypeNav></TypeNav>
+</template>
 
 <script>
 export default {};

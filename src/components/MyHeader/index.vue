@@ -28,12 +28,14 @@
         <!--头部第二行 搜索区域-->
         <div class="bottom">
             <h1 class="logoArea">
+                <!-- 声明式路由 -->
                 <router-link class="logo" to="/home">
                     <img src="./images/logo.png" alt="" />
                 </router-link>
             </h1>
             <div class="searchArea">
                 <form action="###" class="searchForm">
+                    <!-- 双向数据绑定，ref / reactive 将其引用 -->
                     <input type="text" id="autocomplete" class="input-error input-xxlarge" v-model="final" />
                     <button class="sui-btn btn-xlarge btn-danger" type="button" @click="goSearch">搜索</button>
                 </form>

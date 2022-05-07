@@ -32,6 +32,15 @@ export default createRouter({
             path: '/search',
             component: Search,
             meta: { show: true },
+            // props传参，布尔值写法
+            // props:true,
+            // props传参若使用对象式写法，只能用params传参
+            // props传参，函数式写法
+            props: ($route) => {
+                return {
+                    k: $route.query.k,
+                };
+            },
         },
         // 当进入主页，自动重定向到home页面
         {
