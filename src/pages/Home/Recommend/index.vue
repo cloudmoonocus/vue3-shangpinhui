@@ -5,7 +5,7 @@
                 <li class="clock">
                     <div class="time">
                         <img src="./images/clock.png" />
-                        <h3>今日推荐</h3>
+                        <h3 @click="abc">今日推荐</h3>
                     </div>
                 </li>
                 <li class="banner">
@@ -26,7 +26,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+    setup() {},
+};
 </script>
 
 <style lang="less" scoped>
