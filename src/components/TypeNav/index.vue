@@ -1693,11 +1693,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+    name: 'TypeNav',
+};
 </script>
 
 <style lang="less" scoped>
-// 样式
 .type-nav {
     border-bottom: 2px solid #e1251b;
 
