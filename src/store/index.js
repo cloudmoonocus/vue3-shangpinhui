@@ -1,10 +1,17 @@
+import { reqCategoryList } from '@/Api';
 import { createStore } from 'vuex';
-import Home from './Home';
-import Search from './Search';
+import home from './modules/home';
+import search from './modules/search';
 
 export default createStore({
+    actions: {
+        // 请求数据函数
+        // categoryList() {
+        //     console.log(reqCategoryList);
+        // },
+    },
     modules: {
-        Home,
-        Search,
+        home,
+        search,
     },
 });
