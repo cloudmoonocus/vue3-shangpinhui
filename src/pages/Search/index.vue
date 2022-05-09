@@ -1,12 +1,14 @@
 <template>
-    <h1>{{ k }}</h1>
-    <!-- 更多使用$router.query.xxx $router.params.xxx来获取 -->
-    <h1>{{ $route.query.k }}</h1>
+    <!-- Search -->
+    <div>
+        <!-- 三级导航 -->
+        <TypeNav /> 
+    </div>
 </template>
 
 <script>
 export default {
-    props: ['k'],
+    props: ['sousuo'],
 };
 </script>
 

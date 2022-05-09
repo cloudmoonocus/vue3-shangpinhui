@@ -55,7 +55,7 @@ export default {
         // 编程式路由跳转，使用useRouter，需要提前引入
         let goSearch = () => {
             // params不能和path写法一起使用。若使用params传参，则必须指定name
-            router.replace({ path: '/search', query: { k: final.value } });
+            router.replace({ path: '/search', query: { sousuo: final.value } });
         };
         return {
             final,
