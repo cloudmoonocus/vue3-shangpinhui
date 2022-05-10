@@ -100,7 +100,21 @@
 </template>
 
 <script>
-export default {};
+import { onMounted } from '@vue/runtime-core';
+import store from '@/store';
+import { mapState } from 'vuex';
+export default {
+    setup() {
+        onMounted(() => {
+            store.dispatch('home/getBannerList');
+        });
+    },
+    computed: {
+        ...mapState({
+            bannerList: (state) => state.home.bannerList,
+        }),
+    },
+};
 </script>
 
 <style lang="less" scoped>

@@ -6,8 +6,8 @@ Vue3 代码由 **cloudmoon** 编写<br>
 个人博客[https://cloudmoonocus.github.io]
 <br>
 <br>
-**性能优化：多次访问服务器且返回数据一样的，在 APP 中发送请求**
-
+**性能优化：多次访问服务器且返回数据一样的，在 APP 中发送请求<br>
+**mockjs 模拟数据：拦截 Ajax 请求\*\*<br>
 <br>
 <br>
 <br>

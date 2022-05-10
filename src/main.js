@@ -9,6 +9,9 @@ import TypeNav from '@/components/TypeNav';
 // vuex
 import store from './store';
 
+// 引入mock
+import '@/mock/mockServe';
+
 const app = createApp(App);
 
 // 创建三级导航的全局组件

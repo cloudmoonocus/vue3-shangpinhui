@@ -76,6 +76,7 @@
 <script>
 import { onMounted, ref } from '@vue/runtime-core';
 import { mapState, useStore } from 'vuex';
+// 引入模块，防抖方法
 import throttle from 'lodash/throttle';
 import { useRoute } from 'vue-router';
 
@@ -127,6 +128,7 @@ export default {
                 this.show = false;
             }
         },
+        // 三级导航路由跳转
         goSearch(event) {
             // this.$router.push({ name: '/search', query: {fenlei} });
             // 获取带有自定义属性的标签（a标签）
