@@ -12,6 +12,9 @@ import store from './store';
 // 引入mock
 import '@/mock/mockServe';
 
+// 引入swiper@5样式
+import 'swiper/css/swiper.css';
+
 const app = createApp(App);
 
 // 创建三级导航的全局组件

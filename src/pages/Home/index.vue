@@ -5,6 +5,7 @@
     <CommodityList />
     <GuessYouLike />
     <Floor />
+    <Floor />
     <Brand />
 </template>
 

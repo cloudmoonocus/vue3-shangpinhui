@@ -5,18 +5,9 @@
                 <!--轮播-->
                 <div class="swiper-container" id="mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="./images/banner1.jpg" />
+                        <div class="swiper-slide" v-for="(carousel, index) in bannerList" :key="carousel.id">
+                            <img :src="carousel.imgUrl" />
                         </div>
-                        <!-- <div class="swiper-slide">
-                            <img src="./images/banner2.jpg" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="./images/banner3.jpg" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="./images/banner4.jpg" />
-                        </div> -->
                     </div>
                     <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -100,19 +91,27 @@
 </template>
 
 <script>
-import { onMounted } from '@vue/runtime-core';
+import { computed, onMounted, ref, watch } from '@vue/runtime-core';
 import store from '@/store';
 import { mapState } from 'vuex';
 export default {
     setup() {
+        let bannerList = ref();
+        let state = ref();
         onMounted(() => {
             store.dispatch('home/getBannerList');
         });
-    },
-    computed: {
-        ...mapState({
-            bannerList: (state) => state.home.bannerList,
-        }),
+        watch(bannerList, () => {
+            /* ... */
+        });
+        computed({
+            ...mapState({
+                bannerList: (state) => state.home.bannerList,
+            }),
+        });
+        return {
+            bannerList,
+        };
     },
 };
 </script>
