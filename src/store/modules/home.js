@@ -1,9 +1,10 @@
-import { reqBannerList, reqCategoryList } from '@/Api';
+import { reqFloorList, reqBannerList, reqCategoryList } from '@/Api';
 
 const state = {
     // 服务器返回什么类型,state的默认初始值就设置什么类型
     categoryList: [],
     bannerList: [],
+    floorList: [],
 };
 
 const actions = {
@@ -20,6 +21,12 @@ const actions = {
             commit('BANNERLIST', result.data);
         }
     },
+    async getFloorList({ commit }) {
+        let result = await reqFloorList();
+        if (result.code === 200) {
+            commit('FLOORLIST', result.data);
+        }
+    },
 };
 
 const mutations = {
@@ -28,6 +35,9 @@ const mutations = {
     },
     BANNERLIST(state, bannerList) {
         state.bannerList = bannerList;
+    },
+    FLOORLIST(state, floorList) {
+        state.floorList = floorList;
     },
 };
 

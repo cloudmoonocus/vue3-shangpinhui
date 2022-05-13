@@ -5,7 +5,7 @@
                 <!--轮播-->
                 <div class="swiper-container" id="mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(carousel, index) in bannerList" :key="carousel.id">
+                        <div class="swiper-slide" v-for="carousel in bannerList" :key="carousel.id">
                             <img :src="carousel.imgUrl" />
                         </div>
                     </div>
@@ -91,27 +91,40 @@
 </template>
 
 <script>
-import { computed, onMounted, ref, watch } from '@vue/runtime-core';
+import Swiper from 'swiper';
+import { onMounted } from '@vue/runtime-core';
 import store from '@/store';
 import { mapState } from 'vuex';
 export default {
     setup() {
-        let bannerList = ref();
-        let state = ref();
         onMounted(() => {
             store.dispatch('home/getBannerList');
         });
-        watch(bannerList, () => {
-            /* ... */
-        });
-        computed({
-            ...mapState({
-                bannerList: (state) => state.home.bannerList,
-            }),
-        });
-        return {
-            bannerList,
-        };
+    },
+    computed: {
+        ...mapState({
+            bannerList: (state) => state.home.bannerList,
+        }),
+    },
+    watch: {
+        bannerList: {
+            handler() {
+                // nextTick在循环结束后和更改数据后会执行
+                this.$nextTick(() => {
+                    var mySwiper = new Swiper(document.querySelector('.swiper-container'), {
+                        loop: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    });
+                });
+            },
+        },
     },
 };
 </script>

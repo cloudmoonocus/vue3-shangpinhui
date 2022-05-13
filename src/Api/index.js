@@ -13,3 +13,7 @@ export const reqBannerList = () => {
     // axios发请求，返回Promise对象
     return mockRequests({ url: '/banner', method: 'get' });
 };
+export const reqFloorList = () => {
+    // axios发请求，返回Promise对象
+    return mockRequests({ url: '/floor', method: 'get' });
+};

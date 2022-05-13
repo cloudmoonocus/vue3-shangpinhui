@@ -46,15 +46,9 @@
                         <div class="floorBanner">
                             <div class="swiper-container" id="floor1Swiper">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="./images/floor-1-b01.png" />
+                                    <div class="swiper-slide" v-for="carousel in list.carouselList" :key="carousel.id">
+                                        <img :src="carousel.imgUrl" />
                                     </div>
-                                    <!-- <div class="swiper-slide">
-                                        <img src="./images/floor-1-b02.png" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="./images/floor-1-b03.png" />
-                                    </div> -->
                                 </div>
                                 <!-- 如果需要分页器 -->
                                 <div class="swiper-pagination"></div>
@@ -93,7 +87,23 @@
 </template>
 
 <script>
-export default {};
+import Swiper from 'swiper';
+export default {
+    props: ['list'],
+    mounted() {
+        var mySwiper = new Swiper(document.querySelector('.swiper-container'), {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    },
+};
 </script>
 
 <style lang="less" scoped>
