@@ -94,6 +94,7 @@ export default {
         // 这里与引入的store/index.js的store相同
         const store = useStore();
         // 挂载完毕，向服务器发送请求
+
         onMounted(() => {
             // 因为开启了命名空间，所以必须带"home/"
             store.dispatch('home/categoryList');
@@ -103,6 +104,7 @@ export default {
                 show.value = false;
             }
         });
+
         return {
             show,
         };

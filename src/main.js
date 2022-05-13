@@ -15,10 +15,14 @@ import '@/mock/mockServe';
 // 引入swiper@5样式
 import 'swiper/css/swiper.css';
 
+// 引入element-plus
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
+
 const app = createApp(App);
 
 // 创建三级导航的全局组件
 app.component('TypeNav', TypeNav);
 
 // 使用路由和Vuex插件并挂载
-app.use(router).use(store).mount('#app');
+app.use(router).use(store).use(ElementPlus).mount('#app');

@@ -2,20 +2,13 @@
     <div class="list-container">
         <div class="sortList clearfix">
             <div class="center">
-                <!--轮播-->
-                <div class="swiper-container" id="mySwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="carousel in bannerList" :key="carousel.id">
-                            <img :src="carousel.imgUrl" />
-                        </div>
-                    </div>
-                    <!-- 如果需要分页器 -->
-                    <div class="swiper-pagination"></div>
-
-                    <!-- 如果需要导航按钮 -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
+                <!--轮播 element plus-->
+                <el-carousel :interval="3000" arrow="always" height="464px">
+                    <el-carousel-item v-for="carousel in bannerList" :key="carousel.id">
+                        <img :src="carousel.imgUrl" />
+                    </el-carousel-item>
+                </el-carousel>
+                <!-- ************** -->
             </div>
             <div class="right">
                 <div class="news">
@@ -91,7 +84,6 @@
 </template>
 
 <script>
-import Swiper from 'swiper';
 import { onMounted } from '@vue/runtime-core';
 import store from '@/store';
 import { mapState } from 'vuex';
@@ -105,26 +97,6 @@ export default {
         ...mapState({
             bannerList: (state) => state.home.bannerList,
         }),
-    },
-    watch: {
-        bannerList: {
-            handler() {
-                // nextTick在循环结束后和更改数据后会执行
-                this.$nextTick(() => {
-                    var mySwiper = new Swiper(document.querySelector('.swiper-container'), {
-                        loop: true,
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true,
-                        },
-                        navigation: {
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
-                        },
-                    });
-                });
-            },
-        },
     },
 };
 </script>
