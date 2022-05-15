@@ -74,8 +74,8 @@
 </template>
 
 <script>
-import { onMounted, ref } from '@vue/runtime-core';
-import { mapState, useStore } from 'vuex';
+import { computed, onMounted, ref } from '@vue/runtime-core';
+import { useStore } from 'vuex';
 // 引入模块，防抖方法
 import throttle from 'lodash/throttle';
 import { useRoute } from 'vue-router';
@@ -105,16 +105,14 @@ export default {
             }
         });
 
+        const categoryList = computed(() => {
+            return store.state.home.categoryList;
+        });
+
         return {
             show,
+            categoryList,
         };
-    },
-    computed: {
-        ...mapState({
-            // 右侧需要一个函数，当使用计算属性时，右侧函数会立即调用
-            // 注入一个参数state（大仓库的数据）
-            categoryList: (state) => state.home.categoryList,
-        }),
     },
     methods: {
         // 鼠标进入，将鼠标所在区域的index值给this的currentIndex

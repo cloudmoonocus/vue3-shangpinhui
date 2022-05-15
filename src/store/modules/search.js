@@ -10,7 +10,7 @@ const actions = {
     // 在这里必须至少传一个空对象
     async getSearchList({ commit }, params = {}) {
         let result = await reqGetSearchInfo(params);
-        if (result.code == 200) {
+        if (result.data.code === 200) {
             commit('GETSEARCHLIST', result.data);
         }
     },

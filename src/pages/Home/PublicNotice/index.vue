@@ -84,19 +84,19 @@
 </template>
 
 <script>
-import { onMounted } from '@vue/runtime-core';
+import { computed, onMounted } from '@vue/runtime-core';
 import store from '@/store';
-import { mapState } from 'vuex';
 export default {
     setup() {
         onMounted(() => {
             store.dispatch('home/getBannerList');
         });
-    },
-    computed: {
-        ...mapState({
-            bannerList: (state) => state.home.bannerList,
-        }),
+        const bannerList = computed(() => {
+            return store.state.home.bannerList;
+        });
+        return {
+            bannerList,
+        };
     },
 };
 </script>

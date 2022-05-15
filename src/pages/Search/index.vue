@@ -437,7 +437,7 @@ export default {
     name: 'Search',
     setup() {
         onMounted(() => {
-            store.dispatch('search/getSearchList', {});
+            store.dispatch('getSearchList', {});
         });
     },
     components: {

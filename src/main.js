@@ -12,9 +12,6 @@ import store from './store';
 // 引入mock
 import '@/mock/mockServe';
 
-// 引入swiper@5样式
-import 'swiper/css/swiper.css';
-
 // 引入element-plus
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
