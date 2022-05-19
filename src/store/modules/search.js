@@ -1,26 +1,262 @@
-import { reqGetSearchInfo } from '@/Api';
+// import { reqGetSearchInfo } from '@/Api';
 
+// 接口不可用，只能用一部分数据
 const state = {
-    searchList: {},
+    searchList: {
+        trademarkList: [
+            { tmId: 6, tmName: 'VIVO' },
+            { tmId: 2, tmName: '苹果' },
+            { tmId: 1, tmName: '小米' },
+            { tmId: 3, tmName: '华为' },
+            { tmId: 4, tmName: '尚硅谷' },
+            { tmId: 5, tmName: 'OPPO' },
+            { tmId: 7, tmName: '三星' },
+            { tmId: 24, tmName: '联想' },
+            { tmId: 26, tmName: '海信' },
+            { tmId: 27, tmName: '戴尔' },
+        ],
+        attrsList: [
+            { attrId: 106, attrValueList: ['安卓手机', '苹果手机'], attrName: '手机一级' },
+            { attrId: 107, attrValueList: ['小米', '华为', '苹果'], attrName: '二级手机' },
+            { attrId: 24, attrValueList: ['128G', '256G', '64G', '512G', '32G'], attrName: '机身内存' },
+            { attrId: 23, attrValueList: ['8G', '4G', '6G', '12G', '3G'], attrName: '运行内存' },
+            { attrId: 37, attrValueList: ['Java', 'C#', 'JavaScript'], attrName: '分类' },
+            {
+                attrId: 111,
+                attrValueList: ['骁龙845', '麒麟990', '骁龙439', '5G骁龙768G', '骁龙730G'],
+                attrName: 'CPU型号',
+            },
+            {
+                attrId: 112,
+                attrValueList: [
+                    '6.0-6.24英寸',
+                    '6.85-6.94英寸',
+                    '6.55-6.64英寸',
+                    ' 6.75-6.84英寸',
+                    '6.65-6.74英寸',
+                    '6.95英寸及以上',
+                ],
+                attrName: '屏幕尺寸',
+            },
+            { attrId: 113, attrValueList: ['个位大佬不要乱删数据'], attrName: '跪求' },
+            { attrId: 6938, attrValueList: ['黄色'], attrName: '颜色' },
+            { attrId: 17430, attrValueList: ['zwx'], attrName: 'zwx' },
+        ],
+        goodsList: [
+            {
+                id: 5,
+                defaultImg: 'http://47.93.148.192:8080/group1/M00/00/01/rBHu8l-rgJqAHPnoAAF9hoDNfsc505.jpg',
+                title: 'Redmi 10X 4G Helio G85游戏芯 4800万超清四摄 5020mAh大电量 小孔全面屏 128GB大存储 4GB+128GB 明月灰 游戏智能手机 小米 红米',
+                price: 999,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 5434,
+            },
+            {
+                id: 6,
+                defaultImg:
+                    'https://img10.360buyimg.com/n7/jfs/t1/215592/26/7969/179352/61baeb12E938de824/ea00eb7a3cb8a3a7.jpg',
+                title: '荣耀X30 骁龙6nm疾速5G芯 66W超级快充 120Hz全视屏 全网通版 8GB+128GB 钛空银',
+                price: 12,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 8373,
+            },
+            {
+                id: 7,
+                defaultImg:
+                    'https://img10.360buyimg.com/n7/jfs/t1/99171/33/27801/169064/627664c2E4fbcfb78/ce67b4603004da7c.jpg',
+                title: 'Redmi Note 9 Pro 5G 一亿像素 骁龙750G 33W快充 120Hz刷新率 静默星空 8GB+256GB 智能',
+                price: 1299,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 68786,
+            },
+            {
+                id: 8,
+                defaultImg:
+                    'https://img14.360buyimg.com/n7/jfs/t1/206873/13/15894/97556/61e538ccE49ed64b8/b2b50aeaa12e3d91.jpg',
+                title: '新款百事乐智能全面屏双卡长续航游戏拍照学生老年人全网通移动联通电信5G卡千元便宜超薄微信八开为华 石墨黑 8+128G',
+                price: 679,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 9786,
+            },
+            {
+                id: 9,
+                defaultImg:
+                    'https://img12.360buyimg.com/n7/jfs/t1/116939/17/21654/81695/623c9915E4307f3f3/f94cd6da1f6e046e.jpg',
+                title: '天语T12ProMax八核智能6.5英寸水滴屏游戏超薄全网通4G学生老人可用5G卡华.为HMS 蓝色 8+128GB',
+                price: 689,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 97186,
+            },
+
+            {
+                id: 10,
+                defaultImg: 'http://47.93.148.192:8080/group1/M00/00/01/rBHu8l-rgJqAHPnoAAF9hoDNfsc505.jpg',
+                title: 'Redmi 10X 4G Helio G85游戏芯 4800万超清四摄 5020mAh大电量 小孔全面屏 128GB大存储 4GB+128GB 明月灰 游戏智能手机 小米 红米',
+                price: 999,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 5434,
+            },
+            {
+                id: 11,
+                defaultImg:
+                    'https://img10.360buyimg.com/n7/jfs/t1/215592/26/7969/179352/61baeb12E938de824/ea00eb7a3cb8a3a7.jpg',
+                title: '荣耀X30 骁龙6nm疾速5G芯 66W超级快充 120Hz全视屏 全网通版 8GB+128GB 钛空银',
+                price: 12,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 8373,
+            },
+            {
+                id: 12,
+                defaultImg:
+                    'https://img10.360buyimg.com/n7/jfs/t1/99171/33/27801/169064/627664c2E4fbcfb78/ce67b4603004da7c.jpg',
+                title: 'Redmi Note 9 Pro 5G 一亿像素 骁龙750G 33W快充 120Hz刷新率 静默星空 8GB+256GB 智能',
+                price: 1299,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 68786,
+            },
+            {
+                id: 13,
+                defaultImg:
+                    'https://img14.360buyimg.com/n7/jfs/t1/206873/13/15894/97556/61e538ccE49ed64b8/b2b50aeaa12e3d91.jpg',
+                title: '新款百事乐智能全面屏双卡长续航游戏拍照学生老年人全网通移动联通电信5G卡千元便宜超薄微信八开为华 石墨黑 8+128G',
+                price: 679,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 9786,
+            },
+            {
+                id: 14,
+                defaultImg:
+                    'https://img12.360buyimg.com/n7/jfs/t1/116939/17/21654/81695/623c9915E4307f3f3/f94cd6da1f6e046e.jpg',
+                title: '天语T12ProMax八核智能6.5英寸水滴屏游戏超薄全网通4G学生老人可用5G卡华.为HMS 蓝色 8+128GB',
+                price: 689,
+                createTime: null,
+                tmId: null,
+                tmName: null,
+                category1Id: null,
+                category1Name: null,
+                category2Id: null,
+                category2Name: null,
+                category3Id: null,
+                category3Name: null,
+                hotScore: 0,
+                attrs: null,
+                pingjia: 97186,
+            },
+        ],
+        total: 5,
+        pageSize: 5,
+        pageNo: 1,
+        totalPages: 1,
+    },
 };
 
 const actions = {
     // 获取Search模块的数据
     // params参数是在用户派发时候第二个参数传来的
     // 在这里必须至少传一个空对象
-    async getSearchList({ commit }, params = {}) {
-        let result = await reqGetSearchInfo(params);
-        if (result.data.code === 200) {
-            commit('GETSEARCHLIST', result.data);
-        }
-    },
+    // async getSearchList({ commit }, params = {}) {
+    //     let result = await reqGetSearchInfo(params);
+    //     if (result.data.code === 200) {
+    //         commit('GETSEARCHLIST', result.data);
+    //     }
+    // },
 };
 
-const mutations = {
-    GETSEARCHLIST(state, searchList) {
-        state.searchList = searchList;
-    },
-};
+// const mutations = {
+//     GETSEARCHLIST(state, searchList) {
+//         state.searchList = searchList;
+//     },
+// };
 
 // 计算属性：为了简化仓库中的数据
 const getters = {};
@@ -29,6 +265,6 @@ export default {
     namespaced: true,
     state,
     actions,
-    mutations,
+    // mutations,
     getters,
 };

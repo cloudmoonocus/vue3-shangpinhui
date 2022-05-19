@@ -3,11 +3,19 @@ import Home from '@/pages/Home';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import Search from '@/pages/Search';
+import Detail from '@/pages/Detail';
 import { createWebHistory } from 'vue-router';
 
 // 创建路由实例
 export default createRouter({
     history: createWebHistory(),
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        } else {
+            return { top: 0 };
+        }
+    },
     routes: [
         {
             name: 'home',
@@ -41,6 +49,12 @@ export default createRouter({
                     k: $route.query.k,
                 };
             },
+        },
+        {
+            name: 'detail',
+            path: '/detail/:id',
+            component: Detail,
+            meta: { show: true },
         },
         // 当进入主页，自动重定向到home页面
         {

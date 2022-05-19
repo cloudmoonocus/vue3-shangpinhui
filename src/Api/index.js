@@ -18,6 +18,8 @@ export const reqFloorList = () => {
     // axios发请求，返回Promise对象
     return mockRequests({ url: '/floor', method: 'get' });
 };
-// !获取搜索模块数据 Post请求
+// !获取搜索模块数据 Post请求（无法使用）
 // 当前这个接口需要给服务器传递一个参数（至少是个空对象）
 export const reqGetSearchInfo = (params) => requests({ url: '/list', method: 'post', data: params });
+// !获取详情页数据
+export const reqGetDetailList = (skuId) => requests({ url: `/item/${skuId}`, method: 'get' });

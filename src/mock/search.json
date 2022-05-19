@@ -1,0 +1,98 @@
+{
+    "trademarkList": [
+        { "tmId": 6, "tmName": "VIVO" },
+        { "tmId": 2, "tmName": "苹果" },
+        { "tmId": 1, "tmName": "小米" },
+        { "tmId": 3, "tmName": "华为" },
+        { "tmId": 4, "tmName": "尚硅谷" },
+        { "tmId": 5, "tmName": "OPPO" },
+        { "tmId": 7, "tmName": "三星" },
+        { "tmId": 24, "tmName": "联想" },
+        { "tmId": 26, "tmName": "海信" },
+        { "tmId": 27, "tmName": "戴尔" }
+    ],
+    "attrsList": [
+        { "attrId": 106, "attrValueList": ["安卓手机", "苹果手机"], "attrName": "手机一级" },
+        { "attrId": 107, "attrValueList": ["小米", "华为", "苹果"], "attrName": "二级手机" },
+        { "attrId": 24, "attrValueList": ["128G", "256G", "64G", "512G", "32G"], "attrName": "机身内存" },
+        { "attrId": 23, "attrValueList": ["8G", "4G", "6G", "12G", "3G"], "attrName": "运行内存" },
+        { "attrId": 37, "attrValueList": ["Java", "C#", "JavaScript"], "attrName": "分类" },
+        {
+            "attrId": 111,
+            "attrValueList": ["骁龙845", "麒麟990", "骁龙439", "5G骁龙768G", "骁龙730G"],
+            "attrName": "CPU型号"
+        },
+        {
+            "attrId": 112,
+            "attrValueList": [
+                "6.0-6.24英寸",
+                "6.85-6.94英寸",
+                "6.55-6.64英寸",
+                " 6.75-6.84英寸",
+                "6.65-6.74英寸",
+                "6.95英寸及以上"
+            ],
+            "attrName": "屏幕尺寸"
+        },
+        { "attrId": 113, "attrValueList": ["个位大佬不要乱删数据"], "attrName": "跪求" },
+        { "attrId": 6938, "attrValueList": ["黄色"], "attrName": "颜色" },
+        { "attrId": 17430, "attrValueList": ["zwx"], "attrName": "zwx" }
+    ],
+    "goodsList": [
+        {
+            "id": 5,
+            "defaultImg": "http://47.93.148.192:8080/group1/M00/00/01/rBHu8l-rgJqAHPnoAAF9hoDNfsc505.jpg",
+            "title": "Redmi 10X 4G Helio G85游戏芯 4800万超清四摄 5020mAh大电量 小孔全面屏 128GB大存储 4GB+128GB 明月灰 游戏智能手机 小米 红米",
+            "price": 999,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 5802,
+            "defaultImg": "http://47.93.148.192:8080/group1/M00/05/4E/rBHu8mI1MGWAGOnzAAlMVq_ouYU301.jpg",
+            "title": "qaq",
+            "price": 12,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 6,
+            "defaultImg": "http://47.93.148.192:8080/group1/M00/00/01/rBHu8l-rgJqAHPnoAAF9hoDNfsc505.jpg",
+            "title": "Redmi 10X 4G Helio G85游戏芯 4800万超清四摄 5020mAh大电量 小孔全面屏 128GB大存储 8GB+128GB 冰雾白 游戏智能手机 小米 红米",
+            "price": 1299,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        }
+    ],
+    "total": 211,
+    "pageSize": 3,
+    "pageNo": 1,
+    "totalPages": 71
+}
