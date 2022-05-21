@@ -6,7 +6,7 @@
         <section class="con">
             <!-- 导航路径区域 -->
             <div class="conPoin">
-                <!-- <span>{{ goodsView.category3Name }}</span> -->
+                <!-- <span>{{ categoryDeatail.category1Name }}</span> -->
             </div>
             <div class="mainCon">
                 <!-- 左侧放大镜区域 -->
@@ -343,12 +343,13 @@ export default {
         const route = useRoute();
         onMounted(() => {
             store.dispatch('detail/getDetailList', route.params.id);
+            // console.log(store.state.detail.detailList.categoryView);
         });
-        const goodsView = computed(() => {
+        const categoryDeatail = computed(() => {
             return store.getters.goodsView;
         });
         return {
-            goodsView,
+            categoryDeatail,
         };
     },
     components: {

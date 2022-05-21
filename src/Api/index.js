@@ -1,5 +1,4 @@
 // 该文件的作用：统一管理API
-import axios from 'axios';
 import requests from './ajax';
 import mockRequests from './mockAjax';
 
@@ -23,3 +22,17 @@ export const reqFloorList = () => {
 export const reqGetSearchInfo = (params) => requests({ url: '/list', method: 'post', data: params });
 // !获取详情页数据
 export const reqGetDetailList = (skuId) => requests({ url: `/item/${skuId}`, method: 'get' });
+
+// !!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!
+// !购物车等未做（接口问题）
+// !!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!
+
+// !获取验证码
+export const reqGetRegisterCode = (phone) => requests({ url: `/user/passport/sendCode/${phone}`, method: 'get' });
+
+// !注册
+export const reqGetUserRegister = (infor) => requests({ url: '/user/passport/register', method: 'post', data: infor });

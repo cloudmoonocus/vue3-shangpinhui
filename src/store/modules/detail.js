@@ -20,7 +20,7 @@ const mutations = {
 };
 
 const getters = {
-    goodsView(state) {
+    goodsView: (state) => {
         return state.detailList.categoryView || {};
     },
 };

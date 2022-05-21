@@ -3,7 +3,7 @@
         <div class="sortList clearfix">
             <div class="center">
                 <!--轮播 element plus-->
-                <el-carousel :interval="3000" arrow="always" height="464px">
+                <el-carousel :interval="3000" height="464px">
                     <el-carousel-item v-for="carousel in bannerList" :key="carousel.id">
                         <img :src="carousel.imgUrl" />
                     </el-carousel-item>
