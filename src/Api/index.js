@@ -36,3 +36,12 @@ export const reqGetRegisterCode = (phone) => requests({ url: `/user/passport/sen
 
 // !注册
 export const reqGetUserRegister = (infor) => requests({ url: '/user/passport/register', method: 'post', data: infor });
+
+// !登录
+export const reqGetUserLogin = (infor) => requests({ url: '/user/passport/login', method: 'post', data: infor });
+
+// !获取用户的信息【需要携带token向服务器请求用户信息】
+export const reqUserToken = () => requests({ url: '/user/passport/auth/getUserInfo', method: 'get' });
+
+// !退出登录
+export const reqOutLog = () => requests({ url: '/user/passport/logout', method: 'get' });

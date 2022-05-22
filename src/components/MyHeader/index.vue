@@ -6,11 +6,15 @@
             <div class="container">
                 <div class="loginList">
                     <p>尚品汇欢迎您！</p>
-                    <p>
+                    <p v-if="whetherLogin">
                         <span>请</span>
                         <!-- 配置声明式路由跳转 -->
                         <router-link to="/login">登录</router-link>
                         <router-link to="/register" class="register">免费注册</router-link>
+                    </p>
+                    <p v-else>
+                        <a>{{ userName }}</a>
+                        <a class="register" @click="outLog">退出登录</a>
                     </p>
                 </div>
                 <div class="typeList">
@@ -47,6 +51,8 @@
 <script>
 import { ref } from '@vue/reactivity';
 import { useRouter } from 'vue-router';
+import store from '@/store';
+import { computed } from '@vue/runtime-core';
 export default {
     name: 'MyHeader',
     setup() {
@@ -57,9 +63,38 @@ export default {
             // params不能和path写法一起使用。若使用params传参，则必须指定name
             router.replace({ path: '/search', query: { sousuo: final.value } });
         };
+        // 检查是否有token
+        const whetherLogin = computed(() => {
+            if (store.state.login.token) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+        // 获取用户名
+        const userName = computed(() => {
+            if (store.state.login.data.name) {
+                return store.state.login.data.name;
+            }
+        });
+        // 退出登录
+        async function outLog() {
+            // 通知服务器退出登录，服务器要清除token
+            // 清除本地存储的一些数据
+            try {
+                await store.dispatch('login/userOutLog');
+                // 退出成功返回首页
+                router.replace('/home');
+            } catch (error) {
+                alert('Failed!');
+            }
+        }
         return {
             final,
             goSearch,
+            whetherLogin,
+            userName,
+            outLog,
         };
     },
 };

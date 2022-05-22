@@ -24,6 +24,7 @@ export default {
     setup() {
         onMounted(() => {
             store.dispatch('home/getFloorList');
+            store.dispatch('login/userToken');
         });
     },
     computed: {

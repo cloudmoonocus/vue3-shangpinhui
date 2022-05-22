@@ -11,6 +11,8 @@ import nprogress from 'nprogress';
 // 引入进度条的样式
 import 'nprogress/nprogress.css';
 
+import store from '@/store';
+
 // 使用axios对象的方法create，创建一个axios实例
 // request就是axios，只是增加了配置
 const requests = axios.create({
@@ -25,6 +27,10 @@ const requests = axios.create({
 requests.interceptors.request.use((config) => {
     nprogress.start();
     // config是配置对象，对象中有个属性很重要：header请求头
+    // 携带token向服务器索取数据
+    if (store.state.login.token) {
+        config.headers.token = store.state.login.token;
+    }
     return config;
 });
 

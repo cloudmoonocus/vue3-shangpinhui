@@ -14,14 +14,19 @@
                     </ul>
 
                     <div class="content">
-                        <form action="##">
+                        <form>
                             <div class="input-text clearFix">
                                 <span></span>
-                                <input type="text" placeholder="邮箱/用户名/手机号" v-model="infor.account" />
+                                <input type="text" placeholder="邮箱/用户名/手机号" v-model="infor.phone" />
                             </div>
                             <div class="input-text clearFix">
                                 <span class="pwd"></span>
-                                <input type="text" placeholder="请输入密码" v-model="infor.password" />
+                                <input
+                                    type="password"
+                                    placeholder="请输入密码"
+                                    autocomplete="user_password"
+                                    v-model="infor.password"
+                                />
                             </div>
                             <div class="setting clearFix">
                                 <label class="checkbox inline">
@@ -30,7 +35,7 @@
                                 </label>
                                 <span class="forget">忘记密码？</span>
                             </div>
-                            <button class="btn">登&nbsp;&nbsp;录</button>
+                            <button class="btn" @click.prevent="userLogin">登&nbsp;&nbsp;录</button>
                         </form>
 
                         <div class="call clearFix">
@@ -66,14 +71,30 @@
 
 <script>
 import { reactive } from '@vue/reactivity';
+import store from '@/store';
+import { useRouter } from 'vue-router';
 export default {
     name: 'Login',
     setup() {
+        const router = useRouter();
         let infor = reactive({
-            account: '',
+            phone: '',
             password: '',
         });
-        return { infor };
+        async function userLogin() {
+            try {
+                infor.phone &&
+                    infor.password &&
+                    (await store.dispatch('login/userLogin', { phone: infor.phone, password: infor.password }));
+                router.replace('/home');
+            } catch (error) {
+                alert('Failed!');
+            }
+        }
+        return {
+            infor,
+            userLogin,
+        };
     },
 };
 </script>
