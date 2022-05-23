@@ -1,12 +1,12 @@
 <template>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
+    <div>
+        <div>
+            <div>
                 <img src="../images/s1.png" />
             </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div></div>
+        <div></div>
     </div>
 </template>
 

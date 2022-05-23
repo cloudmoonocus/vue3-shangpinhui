@@ -1,4 +1,5 @@
 <template>
+    <el-alert title="商品详情页存在问题，暂未解决！！" type="warning" center show-icon />
     <div>
         <TypeNav />
         <div class="main">

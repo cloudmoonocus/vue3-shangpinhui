@@ -73,6 +73,8 @@
 import { reactive } from '@vue/reactivity';
 import store from '@/store';
 import { useRouter } from 'vue-router';
+// 引入element plus提示框
+import { ElMessage } from 'element-plus';
 export default {
     name: 'Login',
     setup() {
@@ -88,7 +90,12 @@ export default {
                     (await store.dispatch('login/userLogin', { phone: infor.phone, password: infor.password }));
                 router.replace('/home');
             } catch (error) {
-                alert('Failed!');
+                // 使用element plus 弹出警视窗
+                ElMessage.error({
+                    showClose: true,
+                    message: '发生了错误！',
+                    center: true,
+                });
             }
         }
         return {

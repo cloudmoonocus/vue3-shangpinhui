@@ -22,6 +22,9 @@ const actions = {
         let result = await reqUserToken();
         if (result.code === 200) {
             commit('USERTOKEN', result.data);
+            return 'Scuessfull!';
+        } else {
+            return Promise.reject(new Error('Failed!'));
         }
     },
     // 退出登录

@@ -18,14 +18,14 @@
                     </p>
                 </div>
                 <div class="typeList">
-                    <a href="###">我的订单</a>
-                    <a href="###">我的购物车</a>
-                    <a href="###">我的尚品汇</a>
-                    <a href="###">尚品汇会员</a>
-                    <a href="###">企业采购</a>
-                    <a href="###">关注尚品汇</a>
-                    <a href="###">合作招商</a>
-                    <a href="###">商家后台</a>
+                    <a href="###" style="color: red" class="no">我的订单</a>
+                    <a href="###" style="color: red" class="no">我的购物车</a>
+                    <a href="###" class="no">我的尚品汇</a>
+                    <a href="###" class="no">尚品汇会员</a>
+                    <a href="###" class="no">企业采购</a>
+                    <a href="###" class="no">关注尚品汇</a>
+                    <a href="###" class="no">合作招商</a>
+                    <a href="###" class="no">商家后台</a>
                 </div>
             </div>
         </div>
@@ -45,6 +45,14 @@
                 </form>
             </div>
         </div>
+        <el-alert
+            title="您还未登录，登录后可以获取使用更多功能~"
+            type="error"
+            effect="dark"
+            show-icon
+            center
+            v-show="whetherLogin"
+        />
     </header>
 </template>
 
@@ -73,7 +81,7 @@ export default {
         });
         // 获取用户名
         const userName = computed(() => {
-            if (store.state.login.data.name) {
+            if (store.state.login.token) {
                 return store.state.login.data.name;
             }
         });
@@ -137,6 +145,10 @@ export default {
                         border-left: 1px solid #b3aeae;
                     }
                 }
+            }
+
+            .no {
+                text-decoration: line-through;
             }
         }
     }
