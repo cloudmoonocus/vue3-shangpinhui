@@ -1,11 +1,8 @@
 import { createRouter } from 'vue-router';
-import Home from '@/pages/Home';
-import Login from '@/pages/Login';
-import Register from '@/pages/Register';
-import Search from '@/pages/Search';
-import Detail from '@/pages/Detail';
 import { createWebHistory } from 'vue-router';
+
 import store from '@/store';
+
 // 引入element plus提示框
 import { ElMessage } from 'element-plus';
 import { ElNotification } from 'element-plus';
@@ -24,25 +21,25 @@ const router = createRouter({
         {
             name: 'home',
             path: '/home',
-            component: Home,
+            component: () => import('@/pages/Home'),
             meta: { show: true },
         },
         {
             name: 'login',
             path: '/login',
-            component: Login,
+            component: () => import('@/pages/Login'),
             meta: { show: false },
         },
         {
             name: 'register',
             path: '/register',
-            component: Register,
+            component: () => import('@/pages/Register'),
             meta: { show: false },
         },
         {
             name: 'search',
             path: '/search',
-            component: Search,
+            component: () => import('@/pages/Search'),
             meta: { show: true },
             // props传参，布尔值写法
             // props:true,
@@ -57,7 +54,7 @@ const router = createRouter({
         {
             name: 'detail',
             path: '/detail/:id',
-            component: Detail,
+            component: () => import('@/pages/Detail'),
             meta: { show: true },
         },
         // 当进入主页，自动重定向到home页面
@@ -90,20 +87,24 @@ router.beforeEach(async (to, from, next) => {
                 await store.dispatch('login/userToken');
                 next();
             } catch (error) {
-                // token失效了，虽然token还在，但是无法正常获取信息
-                // 清除token，退出登录，返回登录界面
-                // *通知服务器退出登录，服务器要清除token
-                // *清除本地存储的一些数据
-                await store.dispatch('login/userOutLog');
-                // *退出成功返回登录界面
-                next('/login');
-                // 使用element plus 弹出警视窗
-                ElNotification({
-                    title: '使用失败！',
-                    type: 'error',
-                    message: '您还未登录，请先登录！',
-                    duration: 5000,
-                });
+                if (to.path == '/home') {
+                    next();
+                } else {
+                    // token失效了，虽然token还在，但是无法正常获取信息
+                    // 清除token，退出登录，返回登录界面
+                    // *通知服务器退出登录，服务器要清除token
+                    // *清除本地存储的一些数据
+                    await store.dispatch('login/userOutLog');
+                    // *退出成功返回登录界面
+                    next('/login');
+                    // 使用element plus 弹出警视窗
+                    ElNotification({
+                        title: '使用失败！',
+                        type: 'error',
+                        message: '您还未登录，请先登录！',
+                        duration: 5000,
+                    });
+                }
             }
         }
     }

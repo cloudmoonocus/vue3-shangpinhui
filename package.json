@@ -17,6 +17,7 @@
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "swiper": "^5.4.5",
+    "vee-validate": "^4.5.11",
     "vue": "^3.2.13",
     "vue-awesome-swiper": "^5.0.1",
     "vue-router": "^4.0.15",
